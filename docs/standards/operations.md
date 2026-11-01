@@ -27,3 +27,9 @@ docker compose --env-file .env exec -T app python scripts/database_backup.py res
 脚本输出只含固定事件和完整性状态，不回显路径/SQL/异常。备份须另按授权策略导出到安全存储。以上命令不会自动切换运行库。
 
 日常停止 `docker compose --env-file .env down` 保留卷。删除卷操作仅用于已确认的隔离数据。发布失败先停新容器并使用旧镜像；若未来迁移不兼容，恢复备份后再启旧版本，记录恢复点与数据损失窗口。
+
+## 当前业务阶段（complete-repair-workflow）
+
+身份、工单六态、角色授权、附件、评价、统计及UI已进入本次实现；原文“当前仅骨架/未来业务”的阶段描述保留为初始化基线，具体当前边界以本变更设计、规约及验证记录为准。当前密码使用Argon2id；服务端不透明会话8小时，退出即撤销；注册admin/worker须角色邀请码；COOKIE_SECURE在本机HTTP为false，HTTPS部署必须true。新增业务路由为真实实现，原“仅/health”的历史检查不再用于禁止本次端点。
+
+检查方法：tests/test_workflow.py覆盖A01–A04、W01–W06、U01/U03/U04；浏览器检查实际三角色操作。授权绕过、非法状态变化、失效CSRF通过、事务部分提交、附件越权、UI操作无真实响应均为缺陷。

@@ -7,7 +7,7 @@ name = "campus-repair"
 version = "0.1.0"
 description = "Campus repair application foundation"
 requires-python = "==3.12.*"
-dependencies = ["Flask>=3.1,<4", "gunicorn>=23,<24", "python-dotenv[cli]>=1.1,<2"]
+dependencies = ["Flask>=3.1,<4", "gunicorn>=23,<24", "python-dotenv[cli]>=1.1,<2", "argon2-cffi>=25,<26", "Pillow>=13,<14"]
 
 [project.optional-dependencies]
 test = ["pytest>=8.3,<9"]
@@ -21,3 +21,6 @@ py-modules = ["wsgi"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "--strict-markers"
+
+[tool.setuptools.package-data]
+campus_repair = ["templates/*.html", "static/*", "migrations/*.sql"]

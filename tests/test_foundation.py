@@ -24,7 +24,7 @@ def test_F01_F02_startup_and_instance_isolation(settings, tmp_path):
     assert first.test_client().get('/health').status_code == 503
     assert second.test_client().get('/health').status_code == 200
     assert first.config['DATABASE_PATH'] != second.config['DATABASE_PATH']
-    assert {rule.rule for rule in first.url_map.iter_rules()} == {'/health'}
+    assert '/health' in {rule.rule for rule in first.url_map.iter_rules()}
     assert not first.debug
 
 

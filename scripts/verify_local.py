@@ -48,6 +48,7 @@ def main():
             (source / '.env').write_text((source / '.env.example').read_text().replace('/absolute/path/to/campus-repair/instance/campus-repair.sqlite3', str(path)))
             dotenv = source / '.venv/bin/dotenv'
             run([dotenv, '-f', '.env', 'run', '--', python, '-m', 'flask', '--app', 'campus_repair.cli:create_cli_app', 'init-db'])
+            run([dotenv, '-f', '.env', 'run', '--', python, '-m', 'flask', '--app', 'campus_repair.cli:create_cli_app', 'migrate-db'])
             with socket.socket() as sock:
                 sock.bind(('127.0.0.1', 0))
                 port = sock.getsockname()[1]

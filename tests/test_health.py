@@ -59,7 +59,7 @@ def test_H02_real_database_lock_timeout(app, settings):
     assert app.test_client().get('/health').status_code == 200
 
 
-@pytest.mark.parametrize('path', ['/api', '/api/v1/tickets', '/missing'])
+@pytest.mark.parametrize('path', ['/api', '/api/v1/not-implemented', '/missing'])
 def test_H03_unknown_route(app, path):
     response = app.test_client().get(path)
     assert response.status_code == 404

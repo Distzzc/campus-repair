@@ -18,13 +18,14 @@ def check(root):
                     issues.append(f'{path.relative_to(root)}:{node.lineno}: invalid function name')
             if isinstance(node, ast.ClassDef) and not re.fullmatch(r'[A-Z][A-Za-z0-9]*', node.name):
                 issues.append(f'{path.relative_to(root)}:{node.lineno}: invalid class name')
-            if path.stem in infrastructure:
+            if path.stem in infrastructure or 'repositories' in path.parts or 'services' in path.parts:
                 names = []
                 if isinstance(node, ast.ImportFrom):
                     names = [node.module or ''] + [alias.name for alias in node.names]
                 elif isinstance(node, ast.Import):
                     names = [alias.name for alias in node.names]
-                if any(any(part in {'routes', 'services'} for part in name.split('.')) for name in names):
+                forbidden = {'routes', 'services'} if path.stem in infrastructure or 'repositories' in path.parts else {'routes'}
+                if any(any(part in forbidden for part in name.split('.')) for name in names):
                     issues.append(f'{path.relative_to(root)}:{node.lineno}: reverse dependency')
     return issues
 

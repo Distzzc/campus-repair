@@ -1,0 +1,63 @@
+{
+  "items": [
+    {
+      "id": "application-foundation",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 3
+    },
+    {
+      "id": "complete-repair-workflow",
+      "type": "change",
+      "valid": true,
+      "issues": [],
+      "durationMs": 13
+    },
+    {
+      "id": "engineering-governance",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 0
+    },
+    {
+      "id": "health-observability",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 0
+    },
+    {
+      "id": "reproducible-runtime",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 0
+    }
+  ],
+  "summary": {
+    "totals": {
+      "items": 5,
+      "passed": 5,
+      "failed": 0
+    },
+    "byType": {
+      "change": {
+        "items": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "spec": {
+        "items": 4,
+        "passed": 4,
+        "failed": 0
+      }
+    }
+  },
+  "version": "1.0",
+  "root": {
+    "path": "/Users/zzc/Desktop/campus-repair",
+    "source": "nearest"
+  }
+}

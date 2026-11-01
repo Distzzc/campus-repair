@@ -19,4 +19,22 @@ def create_cli_app():
             raise click.exceptions.Exit(1) from None
         emit("database_initialized", minimum_level=app.config["LOG_LEVEL"])
 
+    @app.cli.command('migrate-db')
+    def migrate_db():
+        from campus_repair.migration import migrate
+        migrate(app.config)
+        emit('database_migrated')
+
+    @app.cli.command('seed-demo')
+    @click.option('--reset', is_flag=True)
+    @click.option('--yes', is_flag=True)
+    def seed_demo(reset, yes):
+        from campus_repair.db import close_db
+        from campus_repair.services.demo import seed
+        if reset and not yes:
+            raise click.ClickException('Reset requires --yes')
+        app.teardown_appcontext(close_db)
+        seed(app.config['DEMO_PASSWORD'], reset=reset)
+        emit('demo_seeded')
+
     return app

@@ -25,7 +25,7 @@ def decimal_integer(value, field, minimum, maximum):
 
 
 def load_config(overrides=None):
-    names = ("APP_ENV", "DATABASE_PATH", "LOG_LEVEL", "DB_TIMEOUT_SECONDS")
+    names = ("APP_ENV", "DATABASE_PATH", "LOG_LEVEL", "DB_TIMEOUT_SECONDS", "COOKIE_SECURE", "DEMO_MODE", "DEMO_PASSWORD", "ADMIN_INVITE_CODE", "WORKER_INVITE_CODE")
     values = {name: os.environ[name] for name in names if name in os.environ}
     if overrides:
         values.update({key: val for key, val in overrides.items() if key in names})
@@ -52,5 +52,16 @@ def load_config(overrides=None):
         raise invalid("LOG_LEVEL", "Expected DEBUG, INFO, WARNING or ERROR")
     timeout = decimal_integer(values.get("DB_TIMEOUT_SECONDS", "2"),
                               "DB_TIMEOUT_SECONDS", 1, 10)
-    return {"APP_ENV": values["APP_ENV"], "DATABASE_PATH": str(path),
+    extras = {}
+    for key in ('COOKIE_SECURE', 'DEMO_MODE'):
+        value = values.get(key, 'false')
+        if value not in ('true', 'false'):
+            raise invalid(key, 'Expected true or false')
+        extras[key] = value == 'true'
+    for key in ('DEMO_PASSWORD', 'ADMIN_INVITE_CODE', 'WORKER_INVITE_CODE'):
+        value = values.get(key, '')
+        if not isinstance(value, str) or (value and len(value) < (12 if key == 'DEMO_PASSWORD' else 16)):
+            raise invalid(key, 'Value too short or invalid')
+        extras[key] = value
+    return {**extras, "APP_ENV": values["APP_ENV"], "DATABASE_PATH": str(path),
             "LOG_LEVEL": level, "DB_TIMEOUT_SECONDS": timeout}

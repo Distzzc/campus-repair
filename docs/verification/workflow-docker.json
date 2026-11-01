@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-02 Asia/Shanghai",
+  "result": "passed",
+  "checks": [
+    "A01: real student/admin/worker registration and login passed",
+    "W01/W02/W03/W06: complete role lifecycle, reopen, evaluation, authorization and invalid filter passed",
+    "U04: restart preserved registered users, session and work order data",
+    "Container full pytest passed"
+  ],
+  "project": "campus-workflow-check-19482",
+  "sensitive_values": "not recorded",
+  "cleanup": "only isolated verification project removed"
+}

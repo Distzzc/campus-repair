@@ -30,8 +30,19 @@ def main():
         emit('startup_failed', 'ERROR', error_code='DATABASE_INIT_FAILED')
         return 1
     os.environ['FLASK_SKIP_DOTENV'] = '1'
-    os.execvp('python', ['python', '-m', 'flask', '--app',
-                        'campus_repair.cli:create_cli_app', 'init-db'])
+    from campus_repair.cli import create_cli_app
+    from campus_repair.db import initialize_database, close_db
+    from campus_repair.migration import migrate
+    from campus_repair.services.demo import seed
+    app = create_cli_app()
+    initialize_database(app.config)
+    migrate(app.config)
+    app.teardown_appcontext(close_db)
+    with app.app_context():
+        if app.config['DEMO_MODE']:
+            seed(app.config['DEMO_PASSWORD'])
+    emit('database_ready')
+    return 0
 
 
 if __name__ == '__main__':

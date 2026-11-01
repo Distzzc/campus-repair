@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-02 Asia/Shanghai",
+  "url": "http://127.0.0.1:8000",
+  "healthy": true,
+  "uid": 10001,
+  "image": "sha256:6148727f475705f4a161bbb5240ac5b2cdca417f9673f579819076dcd51ad68c",
+  "demo_accounts": {
+    "student": "login and role verified",
+    "admin": "login and role verified",
+    "worker": "login and role verified"
+  },
+  "log_lines_json": 41,
+  "sensitive_values_in_logs": false,
+  "health": {
+    "checks": {
+      "database": "ok"
+    },
+    "request_id": "273eaae5-cb7c-4981-9e14-3a7bdfdd2e8d",
+    "status": "ok"
+  },
+  "running": true
+}
