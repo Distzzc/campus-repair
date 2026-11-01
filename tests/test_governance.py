@@ -41,9 +41,12 @@ def test_G01_G02_G03_G04_documents_and_scenario_mapping():
     ai = (ROOT / 'docs/standards/ai.md').read_text()
     assert all(value in ai for value in ['原文', '编造', '超时', '评测', '版本', '人工', '尚未'])
     import re
-    specs = ROOT / 'openspec/changes/bootstrap-project-foundation/specs'
+    specs = ROOT / 'openspec/specs'
+    capabilities = ('application-foundation', 'engineering-governance',
+                    'health-observability', 'reproducible-runtime')
     ids = []
-    for path in specs.glob('*/spec.md'):
+    for capability in capabilities:
+        path = specs / capability / 'spec.md'
         ids.extend(re.findall(r'^#### Scenario: ([A-Z]\d{2})', path.read_text(), re.M))
     matrix = (ROOT / 'docs/verification/scenario-matrix.md').read_text()
     assert len(ids) == len(set(ids)) == 26

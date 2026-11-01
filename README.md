@@ -113,7 +113,8 @@ HOST_PORT修改后同步替换访问端口。GET /health无需登录，每次重
 python -m pytest -q
 python scripts/check_standards.py
 docker compose --env-file .env run --rm --no-deps test
-openspec validate bootstrap-project-foundation --type change --strict --no-interactive
+openspec validate --all --strict --no-interactive
+openspec validate --archived --strict --no-interactive
 ```
 
 本地先激活虚拟环境。pytest从Scenario推导，正常/失败/边界均覆盖；每例独立临时库，不读真实.env，不用主机/项目卷。测试包括实际Gunicorn生命周期、健康故障恢复、连接关闭、脱敏、真实锁超时、备份恢复、受控失败阻断与规范代码变异检查。必需测试失败或必需运行验证未执行时不能标记完成。
@@ -138,4 +139,4 @@ openspec validate bootstrap-project-foundation --type change --strict --no-inter
 
 AI仅产出可编辑草稿、分类和补充提示，保留原文，不编造原因/地点/处理结果，不自动提交/分配/改状态，失败仍能手动报修；提示词版本、输出校验、超时降级和评测在后续变更落实。
 
-当前变更的[提案](openspec/changes/bootstrap-project-foundation/proposal.md)、[设计](openspec/changes/bootstrap-project-foundation/design.md)、[规约目录](openspec/changes/bootstrap-project-foundation/specs/)、[任务清单](openspec/changes/bootstrap-project-foundation/tasks.md)是实施与验收依据。路由→服务→数据访问，无反向依赖；当前没有业务规则，健康直接使用数据库基础设施，不为空壳层创建代码。
+首条变更 `bootstrap-project-foundation` 已归档，其[提案](openspec/changes/archive/2026-11-02-bootstrap-project-foundation/proposal.md)、[设计](openspec/changes/archive/2026-11-02-bootstrap-project-foundation/design.md)、[任务清单](openspec/changes/archive/2026-11-02-bootstrap-project-foundation/tasks.md)保留实施历史；同步后的[主规约](openspec/specs/)是当前能力契约。路由→服务→数据访问，无反向依赖；当前没有业务规则，健康直接使用数据库基础设施，不为空壳层创建代码。

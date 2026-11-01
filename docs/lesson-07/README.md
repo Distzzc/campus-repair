@@ -4,7 +4,7 @@
 
 | 交付项 | 证据/检查方法 | 当前结论 |
 | --- | --- | --- |
-| 规划、严格校验、能力/Scenario | [变更目录](../../openspec/changes/bootstrap-project-foundation/)、[严格校验](../verification/strict-validation.json)、[26场景映射](../verification/scenario-matrix.md) | 以实际校验结果为准 |
+| 规划、严格校验、能力/Scenario | [归档变更](../../openspec/changes/archive/2026-11-02-bootstrap-project-foundation/)、[主规约](../../openspec/specs/)、[归档记录](archive.md)、[26场景映射](../verification/scenario-matrix.md) | 四项主规约已同步；变更已归档，历史验证证据保留 |
 | 实现与本地/容器运行 | [实施记录](../verification/implementation.md)、[本地pytest](../verification/pytest-local.txt)、[洁净本地](../verification/clean-local-results.json)、[容器结果](../verification/compose-results.json) | 自动化运行已执行，见原始证据 |
 | 常驻规范及生效 | [AGENTS](../../AGENTS.md)、[六类规范](../standards/)、test_governance.py隔离代码变异检查 | 当前AST依赖/命名与文档检查已执行；真正新会话待验证 |
 | 数据不入Git/镜像 | [真实上下文检查](../verification/context-results.json) | 本地原生Git与真实Docker夹具已执行 |
