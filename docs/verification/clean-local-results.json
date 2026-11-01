@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-01T18:51:50.066462+00:00",
+  "results": [
+    {
+      "scenario": "R01",
+      "result": "passed",
+      "python": "3.12.14",
+      "details": "Clean copy, fresh venv, locked install, explicit dotenv/init, HTTP200, full pytest, SIGTERM exit0",
+      "shutdown_seconds": 0.131
+    }
+  ]
+}

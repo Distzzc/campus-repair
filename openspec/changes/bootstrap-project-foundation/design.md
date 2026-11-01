@@ -113,7 +113,7 @@ docker compose --env-file .env down
 
 HOST_PORT 修改后相应替换 curl 端口；Compose 初始化服务在 app 启动及端口发布前对该变量执行显式范围校验，非法输出 CONFIG_INVALID 和 HOST_PORT，不回显输入。缺省采用8000，显式空值必须保留并拒绝，不用会将空值替换默认的插值写法。app 服务 healthcheck 使用 Python urllib 请求 `http://127.0.0.1:8000/health`，10 秒间隔、3 秒超时、3 次重试、10 秒 start_period。Gunicorn 监听 `0.0.0.0:8000`，1 worker，超时 30 秒，graceful-timeout 10 秒；Compose stop_grace_period 15 秒，脚本通过 exec 转发 SIGTERM。镜像以固定非 root UID/GID 10001 运行。初始化专用一次性服务以 root 仅创建/修正 /data 所有权，再降权调用 init-db；app 依赖该服务成功完成，不在 app 启动时清空或创建库。初始化失败时应用不得启动。明确不对已有任意目录递归 chown；只管理专属卷根及本项目数据库文件。test 服务属于 test profile（默认 up 不启动，显式 run 可执行），使用测试构建 target、隔离临时目录、不挂载数据卷、不暴露端口；生产 target 不装 pytest。
 
-本地流程：`python3.12 -m venv .venv`，激活，`python -m pip install -r requirements-dev.lock`，`python -m pip install --no-deps -e .`，创建 instance/，填写 .env；初始化命令为 `FLASK_SKIP_DOTENV=1 dotenv -f .env run -- python -m flask --app campus_repair.cli:create_cli_app init-db`；启动 `dotenv -f .env run -- gunicorn --bind 127.0.0.1:8000 --workers 1 wsgi:app`；测试 `python -m pytest -q`。cli.py 仅承载有实际用途的初始化入口。FLASK_SKIP_DOTENV=1 是固定 CLI 控制前缀，禁用 Flask 自动 dotenv，命令执行由显式 CLI 注入。生产不使用 Flask 开发服务器。
+本地流程：`python3.12 -m venv .venv`，激活，`python -m pip install -r requirements-dev.lock`，`python -m pip install --no-deps --no-build-isolation -e .`，创建 instance/，填写 .env；初始化命令为 `FLASK_SKIP_DOTENV=1 dotenv -f .env run -- python -m flask --app campus_repair.cli:create_cli_app init-db`；启动 `dotenv -f .env run -- gunicorn --bind 127.0.0.1:8000 --workers 1 wsgi:app`；测试 `python -m pytest -q`。cli.py 仅承载有实际用途的初始化入口。FLASK_SKIP_DOTENV=1 是固定 CLI 控制前缀，禁用 Flask 自动 dotenv，命令执行由显式 CLI 注入。生产不使用 Flask 开发服务器。
 
 .gitignore 至少覆盖 `.env`、`.env.*`（反向保留 `.env.example`）、`instance/`、`*.sqlite*`、`*.db`、数据库 journal/WAL/SHM、`uploads/`、`logs/`、`*.log`、`.venv/`、`venv/`、`__pycache__/`、`.pytest_cache/`、`.coverage`、`htmlcov/`、构建缓存；Docker build context 同样通过 .dockerignore 排除这些内容、Git 和本机虚拟环境。
 
@@ -172,3 +172,7 @@ Scenario ID 固定为标题前缀，tasks 引用此 ID；详细前置/操作/结
 ## Migration Plan
 
 当前无业务数据，不需要业务 schema 迁移。apply 顺序按 tasks：先可启动骨架，再测试、运行、规范与验证。首次部署显式初始化空库；现存数据库必须原样保留。发布前备份卷中的 SQLite（backup API 或停服复制）；保存镜像 digest。失败时停止新容器、恢复旧镜像及原卷；若未来迁移不兼容，先恢复备份再启旧版本。日常 `docker compose down` 保留卷；`down -v` 会删数据，仅在明确的隔离验证卷中使用，README 不作为日常停止命令推荐。恢复演练在临时库/卷完成，记录查询结果与文件校验，绝不操作真实数据。
+
+### 实施说明（2026-11-02）
+
+README现使用实际origin地址。新增server_logging.py与gunicorn.conf.py用于服务器日志脱敏、preload保证配置/数据库失败发生在监听前；数据库探测同时读schema_version以拒绝损坏文件，仍执行SELECT 1。初始化脚本以Python标准库降权，避免额外系统包；standards检查与backup脚本为实际验证/运维工具。可编辑安装使用已锁定setuptools并禁用build isolation，避免隐式下载未锁定构建依赖。HOST_PORT非法字符串可能先被Compose端口语法拒绝；可解析数值的范围与空值仍由init拒绝，均在app监听前失败。

@@ -1,0 +1,15 @@
+{
+  "verification_date": "2026-11-02 Asia/Shanghai",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "architecture": "arm64",
+  "python": "3.12.14",
+  "docker_client": "29.8.0",
+  "docker_engine": "29.8.0",
+  "compose": "5.5.1",
+  "base_image": [
+    "python@sha256:392307d22300de8b5986851a12d9176dfc0fc073e65bf6523ebd7dcbeb23564e"
+  ],
+  "production_image_id": "sha256:7ae8899cada8aeb291a42748b42b7fcdb8966c387c62f5b1c06adc23a2452d01",
+  "production_image_tag": "campus-repair-check-16792-app",
+  "production_python": "Python 3.12.14"
+}

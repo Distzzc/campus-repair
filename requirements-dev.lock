@@ -1,0 +1,7 @@
+# Runtime plus isolated pytest tooling and reproducible editable build.
+-r requirements.lock
+pytest==8.4.2
+iniconfig==2.3.1
+pluggy==1.7.0
+Pygments==2.21.0
+setuptools==80.9.0

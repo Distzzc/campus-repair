@@ -1,0 +1,50 @@
+x-app-environment: &app-environment
+  APP_ENV: production
+  DATABASE_PATH: /data/campus-repair.sqlite3
+  LOG_LEVEL: ${LOG_LEVEL-INFO}
+  DB_TIMEOUT_SECONDS: ${DB_TIMEOUT_SECONDS-2}
+
+services:
+  init:
+    build:
+      context: .
+      target: production
+    user: "0:0"
+    environment:
+      <<: *app-environment
+      HOST_PORT: ${HOST_PORT-8000}
+    volumes:
+      - campus_repair_data:/data
+    command: ["sh", "/app/scripts/init-container.sh"]
+    restart: "no"
+  app:
+    build:
+      context: .
+      target: production
+    environment: *app-environment
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    volumes:
+      - campus_repair_data:/data
+    ports:
+      - "127.0.0.1:${HOST_PORT-8000}:8000"
+    stop_grace_period: 15s
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=2).read()"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+  test:
+    profiles: ["test"]
+    build:
+      context: .
+      target: test
+    environment:
+      PYTHONDONTWRITEBYTECODE: "1"
+    tmpfs:
+      - /tmp
+
+volumes:
+  campus_repair_data:

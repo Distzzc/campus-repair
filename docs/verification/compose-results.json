@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-01T18:52:04.304549+00:00",
+  "project": "campus-repair-check-16792",
+  "results": [
+    {
+      "scenario": "R02",
+      "result": "passed",
+      "details": {
+        "uid": 10001,
+        "database": "/data/campus-repair.sqlite3",
+        "pytest_present": false,
+        "docker_health": "healthy"
+      }
+    },
+    {
+      "scenario": "R05",
+      "result": "passed",
+      "details": "Isolated container pytest, no runtime volume"
+    },
+    {
+      "scenario": "R03",
+      "result": "passed",
+      "details": "down/up and repeated init retained sentinel"
+    },
+    {
+      "scenario": "H07",
+      "result": "passed",
+      "details": "All real server log lines parse as JSON"
+    },
+    {
+      "scenario": "R04",
+      "result": "passed",
+      "details": {
+        "stop_seconds": 0.277,
+        "exit_code": 0,
+        "restored": [
+          "preserved",
+          "ok"
+        ]
+      }
+    },
+    {
+      "scenario": "R02-port-boundaries",
+      "result": "passed",
+      "details": "illegal values block app; legal boundary validator accepted"
+    }
+  ]
+}

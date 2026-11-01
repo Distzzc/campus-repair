@@ -1,0 +1,8 @@
+{
+  "scenario": "R06",
+  "result": "passed",
+  "docker_excluded": 30,
+  "git_excluded": 28,
+  "retained": 7,
+  "method": "Native Git and real Docker build/COPY with synthetic fixtures"
+}

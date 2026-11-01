@@ -1,0 +1,11 @@
+{
+  "result": "passed",
+  "documents": [
+    "README.md",
+    "AGENTS.md",
+    "docs/lesson-07/README.md"
+  ],
+  "standards": 6,
+  "local_links": "all targets exist",
+  "shell_blocks": "sh -n passed"
+}

@@ -1,0 +1,690 @@
+$ docker compose --env-file <isolated-env> -p <isolated-project> up --build -d
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.06kB done
+#1 DONE 0.0s
+
+#2 [app internal] load build definition from Dockerfile
+#2 transferring dockerfile: 985B done
+#2 DONE 0.0s
+
+#3 [init internal] load metadata for docker.io/library/python:3.12.14-slim-bookworm@sha256:392307d22300de8b5986851a12d9176dfc0fc073e65bf6523ebd7dcbeb23564e
+#3 DONE 0.0s
+
+#4 [app internal] load .dockerignore
+#4 transferring context: 697B done
+#4 DONE 0.0s
+
+#5 [init internal] load build context
+#5 transferring context: 6.94kB done
+#5 DONE 0.0s
+
+#6 [init production 1/7] FROM docker.io/library/python:3.12.14-slim-bookworm@sha256:392307d22300de8b5986851a12d9176dfc0fc073e65bf6523ebd7dcbeb23564e
+#6 resolve docker.io/library/python:3.12.14-slim-bookworm@sha256:392307d22300de8b5986851a12d9176dfc0fc073e65bf6523ebd7dcbeb23564e done
+#6 DONE 0.0s
+
+#7 [init production 3/7] COPY requirements.lock ./
+#7 CACHED
+
+#8 [init production 2/7] WORKDIR /app
+#8 CACHED
+
+#9 [init production 4/7] RUN python -m pip install --no-cache-dir -r requirements.lock     && groupadd --gid 10001 campus     && useradd --uid 10001 --gid 10001 --no-create-home campus
+#9 CACHED
+
+#10 [init production 5/7] COPY campus_repair/ ./campus_repair/
+#10 DONE 0.0s
+
+#11 [init production 6/7] COPY wsgi.py gunicorn.conf.py ./
+#11 DONE 0.0s
+
+#12 [init production 7/7] COPY scripts/ ./scripts/
+#12 DONE 0.0s
+
+#13 [init] exporting to image
+#13 exporting layers 0.0s done
+#13 exporting manifest sha256:52d1dcbcd57e9a5ea62145283e72d690457bb541e0692548f2de03d395cebb9c done
+#13 exporting config sha256:c063a8f1a0dd9bde12dad92ac9d3583c580490647a3952dc69043d8bf7a060a8 0.0s done
+#13 exporting attestation manifest sha256:47328f7b0aae67ab29e913ef655504eb11f56b4a175302ca2cb0f4fb66e65455 0.0s done
+#13 exporting manifest list sha256:588331d07065d05deb2d0496e13e03969a6a633aca1efa3cfbc8bc8fe53aee64 done
+#13 naming to docker.io/library/campus-repair-check-16792-init:latest done
+#13 unpacking to docker.io/library/campus-repair-check-16792-init:latest 0.0s done
+#13 DONE 0.1s
+
+#14 [app] exporting to image
+#14 exporting layers 0.0s done
+#14 exporting manifest sha256:b12a724f3c5c4cee475b98059a4fc3274a18447508429c694f87f39599a36f39 done
+#14 exporting config sha256:364e9a43595b258bc0cd969a9ef8d5b43bd0b3f70f16bc88499463457df119ef done
+#14 exporting attestation manifest sha256:d8746df53b5f13543077232d36c2af884cdea21afacbb86b41ef59c3c7f0d774 0.0s done
+#14 exporting manifest list sha256:1157ae80d17b937823a4d4f4768180e3b1b8fb8e22dac4c56a6f82f109cdb68e done
+#14 naming to docker.io/library/campus-repair-check-16792-app:latest done
+#14 unpacking to docker.io/library/campus-repair-check-16792-app:latest 0.0s done
+#14 DONE 0.1s
+
+#15 [init] resolving provenance for metadata file
+#15 DONE 0.0s
+
+#16 [app] resolving provenance for metadata file
+#16 DONE 0.0s
+ Image campus-repair-check-16792-app Building 
+ Image campus-repair-check-16792-init Building 
+ Image campus-repair-check-16792-app Built 
+ Image campus-repair-check-16792-init Built 
+ Network campus-repair-check-16792_default Creating 
+ Volume campus-repair-check-16792_campus_repair_data Creating 
+ Volume campus-repair-check-16792_campus_repair_data Creating 
+ Network campus-repair-check-16792_default Creating 
+ Volume campus-repair-check-16792_campus_repair_data Created 
+ Volume campus-repair-check-16792_campus_repair_data Created 
+ Network campus-repair-check-16792_default Created 
+ Network campus-repair-check-16792_default Created 
+ Container campus-repair-check-16792-init-1 Creating 
+ Container campus-repair-check-16792-init-1 Created 
+ Container campus-repair-check-16792-app-1 Creating 
+ Container campus-repair-check-16792-app-1 Created 
+ Container campus-repair-check-16792-init-1 Starting 
+ Container campus-repair-check-16792-init-1 Started 
+ Container campus-repair-check-16792-init-1 Waiting 
+ Container campus-repair-check-16792-init-1 Exited 
+ Container campus-repair-check-16792-app-1 Starting 
+ Container campus-repair-check-16792-app-1 Started 
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+dba54f6331cb488071c2e89d9c5008aa9561036dd55d61478ccae91a862e41fe
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+dba54f6331cb488071c2e89d9c5008aa9561036dd55d61478ccae91a862e41fe
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+dba54f6331cb488071c2e89d9c5008aa9561036dd55d61478ccae91a862e41fe
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+dba54f6331cb488071c2e89d9c5008aa9561036dd55d61478ccae91a862e41fe
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+dba54f6331cb488071c2e89d9c5008aa9561036dd55d61478ccae91a862e41fe
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+dba54f6331cb488071c2e89d9c5008aa9561036dd55d61478ccae91a862e41fe
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+dba54f6331cb488071c2e89d9c5008aa9561036dd55d61478ccae91a862e41fe
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+dba54f6331cb488071c2e89d9c5008aa9561036dd55d61478ccae91a862e41fe
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+dba54f6331cb488071c2e89d9c5008aa9561036dd55d61478ccae91a862e41fe
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+dba54f6331cb488071c2e89d9c5008aa9561036dd55d61478ccae91a862e41fe
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+dba54f6331cb488071c2e89d9c5008aa9561036dd55d61478ccae91a862e41fe
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+dba54f6331cb488071c2e89d9c5008aa9561036dd55d61478ccae91a862e41fe
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+dba54f6331cb488071c2e89d9c5008aa9561036dd55d61478ccae91a862e41fe
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+dba54f6331cb488071c2e89d9c5008aa9561036dd55d61478ccae91a862e41fe
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+dba54f6331cb488071c2e89d9c5008aa9561036dd55d61478ccae91a862e41fe
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+dba54f6331cb488071c2e89d9c5008aa9561036dd55d61478ccae91a862e41fe
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+dba54f6331cb488071c2e89d9c5008aa9561036dd55d61478ccae91a862e41fe
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> exec -T app python -c import os,importlib.util,json; print(json.dumps({'uid':os.getuid(),'database':os.environ['DATABASE_PATH'],'pytest_present':importlib.util.find_spec('pytest') is not None}))
+{"uid": 10001, "database": "/data/campus-repair.sqlite3", "pytest_present": false}
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> exec -T app python -m pip check
+No broken requirements found.
+WARNING: The directory '/home/campus/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> run --rm --no-deps --build test
+#1 [internal] load local bake definitions
+#1 reading from stdin 568B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 985B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12.14-slim-bookworm@sha256:392307d22300de8b5986851a12d9176dfc0fc073e65bf6523ebd7dcbeb23564e
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 33B
+#4 transferring context: 697B done
+#4 DONE 0.0s
+
+#5 [production 1/7] FROM docker.io/library/python:3.12.14-slim-bookworm@sha256:392307d22300de8b5986851a12d9176dfc0fc073e65bf6523ebd7dcbeb23564e
+#5 resolve docker.io/library/python:3.12.14-slim-bookworm@sha256:392307d22300de8b5986851a12d9176dfc0fc073e65bf6523ebd7dcbeb23564e 0.0s done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 188.10kB done
+#6 DONE 0.0s
+
+#7 [production 2/7] WORKDIR /app
+#7 CACHED
+
+#8 [production 3/7] COPY requirements.lock ./
+#8 CACHED
+
+#9 [production 4/7] RUN python -m pip install --no-cache-dir -r requirements.lock     && groupadd --gid 10001 campus     && useradd --uid 10001 --gid 10001 --no-create-home campus
+#9 CACHED
+
+#10 [production 6/7] COPY wsgi.py gunicorn.conf.py ./
+#10 CACHED
+
+#11 [production 5/7] COPY campus_repair/ ./campus_repair/
+#11 CACHED
+
+#12 [production 7/7] COPY scripts/ ./scripts/
+#12 CACHED
+
+#13 [test 1/6] COPY requirements-dev.lock pyproject.toml ./
+#13 DONE 0.0s
+
+#14 [test 2/6] RUN python -m pip install --no-cache-dir -r requirements-dev.lock
+#14 0.844 Requirement already satisfied: Flask==3.1.3 in /usr/local/lib/python3.12/site-packages (from -r /app/requirements.lock (line 2)) (3.1.3)
+#14 0.844 Requirement already satisfied: blinker==1.9.0 in /usr/local/lib/python3.12/site-packages (from -r /app/requirements.lock (line 3)) (1.9.0)
+#14 0.844 Requirement already satisfied: click==8.5.0 in /usr/local/lib/python3.12/site-packages (from -r /app/requirements.lock (line 4)) (8.5.0)
+#14 0.844 Requirement already satisfied: itsdangerous==2.2.0 in /usr/local/lib/python3.12/site-packages (from -r /app/requirements.lock (line 5)) (2.2.0)
+#14 0.844 Requirement already satisfied: Jinja2==3.1.6 in /usr/local/lib/python3.12/site-packages (from -r /app/requirements.lock (line 6)) (3.1.6)
+#14 0.844 Requirement already satisfied: MarkupSafe==3.0.4 in /usr/local/lib/python3.12/site-packages (from -r /app/requirements.lock (line 7)) (3.0.4)
+#14 0.844 Requirement already satisfied: Werkzeug==3.1.9 in /usr/local/lib/python3.12/site-packages (from -r /app/requirements.lock (line 8)) (3.1.9)
+#14 0.845 Requirement already satisfied: gunicorn==23.0.0 in /usr/local/lib/python3.12/site-packages (from -r /app/requirements.lock (line 9)) (23.0.0)
+#14 0.845 Requirement already satisfied: packaging==26.3 in /usr/local/lib/python3.12/site-packages (from -r /app/requirements.lock (line 10)) (26.3)
+#14 0.845 Requirement already satisfied: python-dotenv==1.2.4 in /usr/local/lib/python3.12/site-packages (from -r /app/requirements.lock (line 11)) (1.2.4)
+#14 1.178 Collecting pytest==8.4.2 (from -r requirements-dev.lock (line 3))
+#14 1.364   Downloading pytest-8.4.2-py3-none-any.whl.metadata (7.7 kB)
+#14 1.438 Collecting iniconfig==2.3.1 (from -r requirements-dev.lock (line 4))
+#14 1.494   Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+#14 1.576 Collecting pluggy==1.7.0 (from -r requirements-dev.lock (line 5))
+#14 1.633   Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+#14 1.724 Collecting Pygments==2.21.0 (from -r requirements-dev.lock (line 6))
+#14 1.779   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+#14 2.009 Collecting setuptools==80.9.0 (from -r requirements-dev.lock (line 7))
+#14 2.063   Downloading setuptools-80.9.0-py3-none-any.whl.metadata (6.6 kB)
+#14 2.126 Downloading pytest-8.4.2-py3-none-any.whl (365 kB)
+#14 2.372 Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+#14 2.425 Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+#14 2.480 Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+#14 2.604    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 11.7 MB/s eta 0:00:00
+#14 2.657 Downloading setuptools-80.9.0-py3-none-any.whl (1.2 MB)
+#14 2.696    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 29.5 MB/s eta 0:00:00
+#14 2.722 Installing collected packages: setuptools, Pygments, pluggy, iniconfig, pytest
+#14 3.815 Successfully installed Pygments-2.21.0 iniconfig-2.3.1 pluggy-1.7.0 pytest-8.4.2 setuptools-80.9.0
+#14 3.815 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#14 4.208 
+#14 4.208 [notice] A new release of pip is available: 25.0.1 -> 26.2.2
+#14 4.208 [notice] To update, run: pip install --upgrade pip
+#14 DONE 4.3s
+
+#15 [test 3/6] COPY tests/ ./tests/
+#15 DONE 0.0s
+
+#16 [test 4/6] COPY README.md AGENTS.md .env.example .gitignore .dockerignore ./
+#16 DONE 0.0s
+
+#17 [test 5/6] COPY docs/ ./docs/
+#17 DONE 0.0s
+
+#18 [test 6/6] COPY openspec/ ./openspec/
+#18 DONE 0.0s
+
+#19 exporting to image
+#19 exporting layers
+#19 exporting layers 0.5s done
+#19 exporting manifest sha256:3d08b4232d276b287cc2b966fa51954c748616164b2e4fb5345ea6ae81e31d4e done
+#19 exporting config sha256:819d2ef9a4c74ee8b4367726cb49b70275003d50e9fc73ee5bc4f73af1ca2dd4 done
+#19 exporting attestation manifest sha256:e1768f78386891fd59638a4685f5be36d5e594cfd54e74380fec27c261ee1d3b done
+#19 exporting manifest list sha256:7678985776c1121f7d32e8d05c0d85daa2ef04f0fdaf45a231bbf34d5f9f1232 done
+#19 naming to docker.io/library/campus-repair-check-16792-test:latest done
+#19 unpacking to docker.io/library/campus-repair-check-16792-test:latest
+#19 unpacking to docker.io/library/campus-repair-check-16792-test:latest 0.3s done
+#19 DONE 0.8s
+
+#20 resolving provenance for metadata file
+#20 DONE 0.0s
+...............................................................          [100%]
+63 passed in 4.53s
+ Image campus-repair-check-16792-test Building 
+ Image campus-repair-check-16792-test Built 
+ Container campus-repair-check-16792-test-run-5fe046dd52ad Creating 
+ Container campus-repair-check-16792-test-run-5fe046dd52ad Created 
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> exec -T app python -c import sqlite3; c=sqlite3.connect('/data/campus-repair.sqlite3'); c.execute('CREATE TABLE verify_sentinel(value TEXT)'); c.execute("INSERT INTO verify_sentinel VALUES ('preserved')"); c.commit(); c.close()
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> exec -T app python -c import sqlite3; c=sqlite3.connect('/data/campus-repair.sqlite3'); print(c.execute('SELECT value FROM verify_sentinel').fetchone()[0]); c.close()
+preserved
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> down
+ Container campus-repair-check-16792-app-1 Stopping 
+ Container campus-repair-check-16792-app-1 Stopped 
+ Container campus-repair-check-16792-app-1 Removing 
+ Container campus-repair-check-16792-app-1 Removed 
+ Container campus-repair-check-16792-init-1 Stopping 
+ Container campus-repair-check-16792-init-1 Stopped 
+ Container campus-repair-check-16792-init-1 Removing 
+ Container campus-repair-check-16792-init-1 Removed 
+ Network campus-repair-check-16792_default Removing 
+ Network campus-repair-check-16792_default Removed 
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> up --build -d
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.06kB done
+#1 DONE 0.0s
+
+#2 [init internal] load build definition from Dockerfile
+#2 transferring dockerfile: 985B done
+#2 DONE 0.0s
+
+#3 [app internal] load metadata for docker.io/library/python:3.12.14-slim-bookworm@sha256:392307d22300de8b5986851a12d9176dfc0fc073e65bf6523ebd7dcbeb23564e
+#3 DONE 0.0s
+
+#4 [app internal] load .dockerignore
+#4 transferring context: 697B done
+#4 DONE 0.0s
+
+#5 [app internal] load build context
+#5 transferring context: 929B done
+#5 DONE 0.0s
+
+#6 [app production 1/7] FROM docker.io/library/python:3.12.14-slim-bookworm@sha256:392307d22300de8b5986851a12d9176dfc0fc073e65bf6523ebd7dcbeb23564e
+#6 resolve docker.io/library/python:3.12.14-slim-bookworm@sha256:392307d22300de8b5986851a12d9176dfc0fc073e65bf6523ebd7dcbeb23564e done
+#6 DONE 0.0s
+
+#7 [app production 3/7] COPY requirements.lock ./
+#7 CACHED
+
+#8 [app production 4/7] RUN python -m pip install --no-cache-dir -r requirements.lock     && groupadd --gid 10001 campus     && useradd --uid 10001 --gid 10001 --no-create-home campus
+#8 CACHED
+
+#9 [app production 5/7] COPY campus_repair/ ./campus_repair/
+#9 CACHED
+
+#10 [app production 6/7] COPY wsgi.py gunicorn.conf.py ./
+#10 CACHED
+
+#11 [app production 2/7] WORKDIR /app
+#11 CACHED
+
+#12 [init production 7/7] COPY scripts/ ./scripts/
+#12 CACHED
+
+#13 [init] exporting to image
+#13 exporting layers done
+#13 exporting manifest sha256:52d1dcbcd57e9a5ea62145283e72d690457bb541e0692548f2de03d395cebb9c done
+#13 exporting config sha256:c063a8f1a0dd9bde12dad92ac9d3583c580490647a3952dc69043d8bf7a060a8 done
+#13 exporting attestation manifest sha256:5ef37731372b29a480e71d8a7fc826a56214cb0eb3e2ecdb77a4217f8482485e 0.0s done
+#13 exporting manifest list sha256:c37923e69f088d984d1c19816a676c280679a6b86573fb52e66d08f4be8a19ee done
+#13 naming to docker.io/library/campus-repair-check-16792-init:latest done
+#13 unpacking to docker.io/library/campus-repair-check-16792-init:latest done
+#13 DONE 0.0s
+
+#14 [app] exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:b12a724f3c5c4cee475b98059a4fc3274a18447508429c694f87f39599a36f39 done
+#14 exporting config sha256:364e9a43595b258bc0cd969a9ef8d5b43bd0b3f70f16bc88499463457df119ef done
+#14 exporting attestation manifest sha256:492e3dd0c286f240addcda46982dfe74b81986867accfbf89a866a32bdeefe32 done
+#14 exporting manifest list sha256:7ae8899cada8aeb291a42748b42b7fcdb8966c387c62f5b1c06adc23a2452d01 done
+#14 naming to docker.io/library/campus-repair-check-16792-app:latest done
+#14 unpacking to docker.io/library/campus-repair-check-16792-app:latest done
+#14 DONE 0.1s
+
+#15 [init] resolving provenance for metadata file
+#15 DONE 0.0s
+
+#16 [app] resolving provenance for metadata file
+#16 DONE 0.0s
+ Image campus-repair-check-16792-app Building 
+ Image campus-repair-check-16792-init Building 
+ Image campus-repair-check-16792-init Built 
+ Image campus-repair-check-16792-app Built 
+ Network campus-repair-check-16792_default Creating 
+ Network campus-repair-check-16792_default Creating 
+ Network campus-repair-check-16792_default Created 
+ Network campus-repair-check-16792_default Created 
+ Container campus-repair-check-16792-init-1 Creating 
+ Container campus-repair-check-16792-init-1 Created 
+ Container campus-repair-check-16792-app-1 Creating 
+ Container campus-repair-check-16792-app-1 Created 
+ Container campus-repair-check-16792-init-1 Starting 
+ Container campus-repair-check-16792-init-1 Started 
+ Container campus-repair-check-16792-init-1 Waiting 
+ Container campus-repair-check-16792-init-1 Exited 
+ Container campus-repair-check-16792-app-1 Starting 
+ Container campus-repair-check-16792-app-1 Started 
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+ba30070997fe8ad048ba21e7de4d55eb7821b9b679b5a6f7a5490828e543a94d
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+ba30070997fe8ad048ba21e7de4d55eb7821b9b679b5a6f7a5490828e543a94d
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+ba30070997fe8ad048ba21e7de4d55eb7821b9b679b5a6f7a5490828e543a94d
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+ba30070997fe8ad048ba21e7de4d55eb7821b9b679b5a6f7a5490828e543a94d
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+ba30070997fe8ad048ba21e7de4d55eb7821b9b679b5a6f7a5490828e543a94d
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+ba30070997fe8ad048ba21e7de4d55eb7821b9b679b5a6f7a5490828e543a94d
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+ba30070997fe8ad048ba21e7de4d55eb7821b9b679b5a6f7a5490828e543a94d
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+ba30070997fe8ad048ba21e7de4d55eb7821b9b679b5a6f7a5490828e543a94d
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+ba30070997fe8ad048ba21e7de4d55eb7821b9b679b5a6f7a5490828e543a94d
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+ba30070997fe8ad048ba21e7de4d55eb7821b9b679b5a6f7a5490828e543a94d
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+ba30070997fe8ad048ba21e7de4d55eb7821b9b679b5a6f7a5490828e543a94d
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+ba30070997fe8ad048ba21e7de4d55eb7821b9b679b5a6f7a5490828e543a94d
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+ba30070997fe8ad048ba21e7de4d55eb7821b9b679b5a6f7a5490828e543a94d
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+ba30070997fe8ad048ba21e7de4d55eb7821b9b679b5a6f7a5490828e543a94d
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+ba30070997fe8ad048ba21e7de4d55eb7821b9b679b5a6f7a5490828e543a94d
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+ba30070997fe8ad048ba21e7de4d55eb7821b9b679b5a6f7a5490828e543a94d
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+ba30070997fe8ad048ba21e7de4d55eb7821b9b679b5a6f7a5490828e543a94d
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> exec -T app python -c import sqlite3; c=sqlite3.connect('/data/campus-repair.sqlite3'); print(c.execute('SELECT value FROM verify_sentinel').fetchone()[0]); c.close()
+preserved
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> exec -T app python scripts/database_backup.py backup /data/campus-repair.sqlite3 /data/check-backup.sqlite3
+{"timestamp":"2026-11-01T18:52:00.187Z","level":"INFO","event":"backup_completed","request_id":null,"method":null,"path":null,"status_code":null,"duration_ms":null}
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> exec -T app python scripts/database_backup.py restore /data/check-backup.sqlite3 /data/check-restored.sqlite3
+{"timestamp":"2026-11-01T18:52:00.471Z","level":"INFO","event":"backup_completed","request_id":null,"method":null,"path":null,"status_code":null,"duration_ms":null}
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> exec -T app python -c import sqlite3; c=sqlite3.connect('/data/check-restored.sqlite3'); print(c.execute('SELECT value FROM verify_sentinel').fetchone()[0]); print(c.execute('PRAGMA integrity_check').fetchone()[0]); c.close()
+preserved
+ok
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> logs --no-color --no-log-prefix app
+{"timestamp":"2026-11-01T18:51:54.611Z","level":"INFO","event":"request_completed","request_id":"4f3d28af-0529-4c5e-9fd4-fff8ed3c66b3","method":"GET","path":"/health","status_code":200,"duration_ms":0.524}
+{"timestamp":"2026-11-01T18:51:54.902Z","level":"INFO","event":"request_completed","request_id":"05af5359-ec90-44d4-800b-71dc5909ec0b","method":"GET","path":"/health","status_code":200,"duration_ms":0.9}
+{"timestamp":"2026-11-01T18:51:55.225Z","level":"INFO","event":"request_completed","request_id":"eb6b4dd5-c57a-45bc-bf9f-0ad6e09542ad","method":"GET","path":"/health","status_code":200,"duration_ms":0.554}
+{"timestamp":"2026-11-01T18:51:55.547Z","level":"INFO","event":"request_completed","request_id":"d50596d1-c01d-405d-a47e-ec05e00fbd74","method":"GET","path":"/health","status_code":200,"duration_ms":0.213}
+{"timestamp":"2026-11-01T18:51:55.847Z","level":"INFO","event":"request_completed","request_id":"b0ccfece-1b67-49ae-ad8c-28831e43456b","method":"GET","path":"/health","status_code":200,"duration_ms":0.646}
+{"timestamp":"2026-11-01T18:51:56.181Z","level":"INFO","event":"request_completed","request_id":"2cc19f9e-2847-4fc7-99b3-22d7ba5b411b","method":"GET","path":"/health","status_code":200,"duration_ms":0.623}
+{"timestamp":"2026-11-01T18:51:56.509Z","level":"INFO","event":"request_completed","request_id":"e211a3e5-7994-497f-bf29-6bd33a93c971","method":"GET","path":"/health","status_code":200,"duration_ms":0.73}
+{"timestamp":"2026-11-01T18:51:56.831Z","level":"INFO","event":"request_completed","request_id":"2b8ad5eb-53d4-4d5e-b7d0-99a7d1df7e84","method":"GET","path":"/health","status_code":200,"duration_ms":0.659}
+{"timestamp":"2026-11-01T18:51:57.155Z","level":"INFO","event":"request_completed","request_id":"078e68fa-2564-48ee-aa28-34cdeed32f75","method":"GET","path":"/health","status_code":200,"duration_ms":0.661}
+{"timestamp":"2026-11-01T18:51:57.478Z","level":"INFO","event":"request_completed","request_id":"8bcdf514-9275-4bbf-83ab-2e7466c8db6f","method":"GET","path":"/health","status_code":200,"duration_ms":0.406}
+{"timestamp":"2026-11-01T18:51:57.802Z","level":"INFO","event":"request_completed","request_id":"d1a886dd-0224-4efc-ba94-0f7554483f70","method":"GET","path":"/health","status_code":200,"duration_ms":0.435}
+{"timestamp":"2026-11-01T18:51:58.124Z","level":"INFO","event":"request_completed","request_id":"1fff1816-cee0-4934-b809-7b46373093e2","method":"GET","path":"/health","status_code":200,"duration_ms":0.528}
+{"timestamp":"2026-11-01T18:51:58.445Z","level":"INFO","event":"request_completed","request_id":"32ba8e41-d396-4f71-b654-0a8d14bf3d11","method":"GET","path":"/health","status_code":200,"duration_ms":0.488}
+{"timestamp":"2026-11-01T18:51:58.765Z","level":"INFO","event":"request_completed","request_id":"e1cd8d84-02c0-4e9e-9263-aa79f6ef407e","method":"GET","path":"/health","status_code":200,"duration_ms":0.607}
+{"timestamp":"2026-11-01T18:51:59.091Z","level":"INFO","event":"request_completed","request_id":"4f4bf938-f3fa-4703-9fd3-1b692b0cb0c4","method":"GET","path":"/health","status_code":200,"duration_ms":0.615}
+{"timestamp":"2026-11-01T18:51:59.413Z","level":"INFO","event":"request_completed","request_id":"8ea698e3-ffe9-40a2-bf02-3ceadfd16882","method":"GET","path":"/health","status_code":200,"duration_ms":0.44}
+{"timestamp":"2026-11-01T18:51:59.545Z","level":"INFO","event":"request_completed","request_id":"34963e94-f4f2-4ad4-a83d-46d454028a8e","method":"GET","path":"/health","status_code":200,"duration_ms":0.191}
+{"timestamp":"2026-11-01T18:51:59.705Z","level":"INFO","event":"request_completed","request_id":"6d40bcb6-4c7d-4c6b-8596-0803f2df131f","method":"GET","path":"/health","status_code":200,"duration_ms":0.374}
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps -q app
+ba30070997fe8ad048ba21e7de4d55eb7821b9b679b5a6f7a5490828e543a94d
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> stop app
+ Container campus-repair-check-16792-app-1 Stopping 
+ Container campus-repair-check-16792-app-1 Stopped 
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> down
+ Container campus-repair-check-16792-app-1 Stopping 
+ Container campus-repair-check-16792-app-1 Stopped 
+ Container campus-repair-check-16792-app-1 Removing 
+ Container campus-repair-check-16792-app-1 Removed 
+ Container campus-repair-check-16792-init-1 Stopping 
+ Container campus-repair-check-16792-init-1 Stopped 
+ Container campus-repair-check-16792-init-1 Removing 
+ Container campus-repair-check-16792-init-1 Removed 
+ Network campus-repair-check-16792_default Removing 
+ Network campus-repair-check-16792_default Removed 
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> up -d
+ Network campus-repair-check-16792_default Creating 
+ Network campus-repair-check-16792_default Creating 
+ Network campus-repair-check-16792_default Created 
+ Network campus-repair-check-16792_default Created 
+ Container campus-repair-check-16792-init-1 Creating 
+ Container campus-repair-check-16792-init-1 Created 
+ Container campus-repair-check-16792-app-1 Creating 
+ Container campus-repair-check-16792-app-1 Created 
+ Container campus-repair-check-16792-init-1 Starting 
+ Container campus-repair-check-16792-init-1 Started 
+ Container campus-repair-check-16792-init-1 Waiting 
+ Container campus-repair-check-16792-init-1 Error service "init" didn't complete successfully: exit 1
+service "init" didn't complete successfully: exit 1
+
+exit=1
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps --status running -q app
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> down
+ Container campus-repair-check-16792-app-1 Stopping 
+ Container campus-repair-check-16792-app-1 Stopped 
+ Container campus-repair-check-16792-app-1 Removing 
+ Container campus-repair-check-16792-app-1 Removed 
+ Container campus-repair-check-16792-init-1 Stopping 
+ Container campus-repair-check-16792-init-1 Stopped 
+ Container campus-repair-check-16792-init-1 Removing 
+ Container campus-repair-check-16792-init-1 Removed 
+ Network campus-repair-check-16792_default Removing 
+ Network campus-repair-check-16792_default Removed 
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> up -d
+invalid hostPort: 65536
+
+exit=1
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps --status running -q app
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> down
+time="2026-11-02T02:52:02+08:00" level=warning msg="Warning: No resource found to remove for project \"campus-repair-check-16792\"."
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> up -d
+ Network campus-repair-check-16792_default Creating 
+ Network campus-repair-check-16792_default Creating 
+ Network campus-repair-check-16792_default Created 
+ Network campus-repair-check-16792_default Created 
+ Container campus-repair-check-16792-init-1 Creating 
+ Container campus-repair-check-16792-init-1 Created 
+ Container campus-repair-check-16792-app-1 Creating 
+ Container campus-repair-check-16792-app-1 Created 
+ Container campus-repair-check-16792-init-1 Starting 
+ Container campus-repair-check-16792-init-1 Started 
+ Container campus-repair-check-16792-init-1 Waiting 
+ Container campus-repair-check-16792-init-1 Error service "init" didn't complete successfully: exit 1
+service "init" didn't complete successfully: exit 1
+
+exit=1
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps --status running -q app
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> down
+ Container campus-repair-check-16792-app-1 Stopping 
+ Container campus-repair-check-16792-app-1 Stopped 
+ Container campus-repair-check-16792-app-1 Removing 
+ Container campus-repair-check-16792-app-1 Removed 
+ Container campus-repair-check-16792-init-1 Stopping 
+ Container campus-repair-check-16792-init-1 Stopped 
+ Container campus-repair-check-16792-init-1 Removing 
+ Container campus-repair-check-16792-init-1 Removed 
+ Network campus-repair-check-16792_default Removing 
+ Network campus-repair-check-16792_default Removed 
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> up -d
+invalid hostPort: not-a-number
+
+exit=1
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> ps --status running -q app
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> down
+time="2026-11-02T02:52:03+08:00" level=warning msg="Warning: No resource found to remove for project \"campus-repair-check-16792\"."
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> run --rm --no-deps init python -c from campus_repair.config import decimal_integer; assert decimal_integer('1024', 'HOST_PORT', 1024, 65535)==1024
+ Network campus-repair-check-16792_default Creating 
+ Network campus-repair-check-16792_default Creating 
+ Network campus-repair-check-16792_default Created 
+ Network campus-repair-check-16792_default Created 
+ Container campus-repair-check-16792-init-run-726e9e28b2b6 Creating 
+ Container campus-repair-check-16792-init-run-726e9e28b2b6 Created 
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> run --rm --no-deps init python -c from campus_repair.config import decimal_integer; assert decimal_integer('65535', 'HOST_PORT', 1024, 65535)==65535
+ Container campus-repair-check-16792-init-run-9a809e970b0e Creating 
+ Container campus-repair-check-16792-init-run-9a809e970b0e Created 
+
+exit=0
+
+$ docker compose --env-file <isolated-env> -p <isolated-project> down -v
+ Volume campus-repair-check-16792_campus_repair_data Removing 
+ Network campus-repair-check-16792_default Removing 
+ Volume campus-repair-check-16792_campus_repair_data Removed 
+ Network campus-repair-check-16792_default Removed 
+
+exit=0
