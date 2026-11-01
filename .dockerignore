@@ -1,0 +1,48 @@
+# Version-control metadata and local environment.
+.git
+**/.git
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+
+# Runtime data must never enter the image build context.
+instance
+**/instance
+**/*.sqlite*
+**/*.db
+**/*.db-journal
+**/*.db-wal
+**/*.db-shm
+uploads
+**/uploads
+logs
+**/logs
+**/*.log
+
+# Host environments, caches, and build output.
+.venv
+**/.venv
+venv
+**/venv
+**/__pycache__
+**/*.py[cod]
+**/.pytest_cache
+**/.mypy_cache
+**/.ruff_cache
+**/.cache
+**/.coverage
+**/.coverage.*
+**/htmlcov
+**/coverage.xml
+build
+**/build
+dist
+**/dist
+**/*.egg-info
+**/.eggs
+**/.DS_Store
+
+# Dependency lock files and .env.example are intentionally included.

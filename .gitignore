@@ -1,0 +1,38 @@
+# Local environment; keep the documented example.
+.env
+.env.*
+!.env.example
+
+# Application data, attachments, logs, and SQLite sidecars.
+instance/
+*.sqlite*
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+uploads/
+logs/
+*.log
+
+# Python environments, bytecode, test and tool caches.
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Python packaging output.
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# macOS metadata.
+.DS_Store
